@@ -1,0 +1,322 @@
+/* ---------- Variáveis ---------- */
+:root {
+    --basalt: #12263a;
+    --hydrangea: #3b6ea8;
+    --hydrangea-dark: #2d5786;
+    --mist: #f3f6f9;
+    --line: #d9e1e9;
+    --white: #ffffff;
+    --text: #1c2b3a;
+    --muted: #5a6b7c;
+
+    --free-bg: #dff3e6;
+    --free-text: #1d6b3a;
+    --loan-bg: #fde8d4;
+    --loan-text: #8a4310;
+    --reserved-bg: #e1e9f6;
+    --reserved-text: #284c82;
+
+    --font-title: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+    --font-body: "Public Sans", "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+main { flex: 1; }
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    line-height: 1.15;
+    margin: 0 0 0.6em;
+    color: var(--basalt);
+}
+
+p { margin: 0 0 1em; }
+
+a { color: var(--hydrangea); }
+
+a:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--hydrangea);
+    outline-offset: 3px;
+}
+
+.container {
+    width: min(1100px, 100% - 2rem);
+    margin-inline: auto;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    background: var(--basalt);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding-block: 0.9rem;
+}
+
+.brand {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    color: #c9d6e3;
+    text-decoration: none;
+    padding: 0.35rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+    color: var(--white);
+    border-bottom-color: var(--white);
+}
+
+.main-nav a:focus-visible,
+.brand:focus-visible,
+.site-footer a:focus-visible {
+    outline: 3px solid var(--white);
+    outline-offset: 3px;
+}
+
+.auth {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-primary {
+    background: var(--hydrangea);
+    color: var(--white);
+}
+
+.btn-primary:hover { background: var(--hydrangea-dark); }
+
+.btn-ghost {
+    color: var(--hydrangea);
+    border-color: var(--hydrangea);
+    background: transparent;
+}
+
+.btn-ghost:hover {
+    background: var(--hydrangea);
+    color: var(--white);
+}
+
+/* No header (fundo escuro) o botão secundário é claro */
+.site-header .btn-ghost {
+    color: var(--white);
+    border-color: #6f87a0;
+}
+
+.site-header .btn-ghost:hover {
+    background: var(--white);
+    color: var(--basalt);
+    border-color: var(--white);
+}
+
+.site-header .btn-primary:focus-visible,
+.site-header .btn-ghost:focus-visible {
+    outline-color: var(--white);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    background: var(--mist);
+    border-bottom: 1px solid var(--line);
+    padding-block: 4rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 52ch;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* ---------- Painel de estado ---------- */
+.status-board {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+}
+
+.status-board h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.status-board ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.status-board li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.item-name { font-weight: 500; }
+
+.chip {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.chip-free     { background: var(--free-bg);     color: var(--free-text); }
+.chip-loan     { background: var(--loan-bg);     color: var(--loan-text); }
+.chip-reserved { background: var(--reserved-bg); color: var(--reserved-text); }
+
+/* ---------- Como funciona ---------- */
+.steps { padding-block: 4rem; }
+
+.steps h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.steps-list {
+    list-style: none;
+    counter-reset: passo;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.steps-list li {
+    counter-increment: passo;
+    border-top: 3px solid var(--hydrangea);
+    padding-top: 1rem;
+}
+
+.steps-list li::before {
+    content: counter(passo);
+    display: block;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--hydrangea);
+    margin-bottom: 0.25rem;
+}
+
+.steps-list h3 { font-size: 1.2rem; margin-bottom: 0.4em; }
+
+.steps-list p { color: var(--muted); max-width: 40ch; margin: 0; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+    background: var(--basalt);
+    color: #c9d6e3;
+    padding-block: 1.5rem;
+    font-size: 0.92rem;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+}
+
+.footer-inner p { margin: 0; }
+
+.site-footer a {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+    .hero { padding-block: 2.5rem; }
+
+    .hero-grid,
+    .steps-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-grid { gap: 2rem; }
+}
+
+@media (max-width: 640px) {
+    .header-inner { justify-content: center; }
+    .main-nav { order: 3; width: 100%; }
+    .main-nav ul { justify-content: center; }
+    .footer-inner { justify-content: center; text-align: center; }
+}
