@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historico', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_reserva')->constrained('reservas');
-            $table->date('data_devolucao');
+        Schema::create('record', function (Blueprint $table) {
+            $table->id('record_id');
+            $table->foreignId('reservation_id')->constrained('reservation');
+            $table->enum('type',['Reserved','In use','Returned'])->default('Reserved');
             $table->timestamps();
         });
     }

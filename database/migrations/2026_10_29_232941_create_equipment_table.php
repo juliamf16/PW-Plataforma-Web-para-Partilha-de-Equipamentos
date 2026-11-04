@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('equipamentos', function (Blueprint $table) {
+        Schema::create('equipment', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->text('descricao');
-            $table->enum('tipo', ['A', 'B', 'C'])->default('C');
-            $table->float('valor_reserva');
+            $table->string('name');
+            $table->text('description');
+            $table->enum('type', ['Other',
+                'Sound System',
+                'Video System',
+                'Light System'])->default('Other');
+            $table->float('reservartion_price');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('equipamentos');
+        Schema::dropIfExists('equipment');
     }
 };
