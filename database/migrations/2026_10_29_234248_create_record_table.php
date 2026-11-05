@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('record', function (Blueprint $table) {
-            $table->id('record_id');
+            $table->id('id');
             $table->foreignId('reservation_id')->constrained('reservation');
             $table->enum('type',['Reserved','In use','Returned'])->default('Reserved');
             $table->timestamps();
